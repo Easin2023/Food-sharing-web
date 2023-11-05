@@ -1,0 +1,155 @@
+import { Button, Image } from "@nextui-org/react";
+import { Link } from "react-router-dom";
+
+const Banner = () => {
+  const btn = (
+    <>
+      <Button color="danger" variant="ghost" className="h-14 text-xl mr-4">
+        learn more
+      </Button>
+      <Link to="/signUp">
+        <Button
+          radius="md"
+          className="bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg text-xl h-14"
+        >
+          sign up
+        </Button>
+      </Link>
+    </>
+  );
+
+  return (
+    <div className="carousel w-full max-h-[800px]">
+      <div id="slide1" className="carousel-item relative w-full">
+        <div className="flex">
+          <div className="flex-1">
+            <h1 className="text-5xl leading-snug font-bold mt-52 ml-28">
+              The Joy of{" "}
+              <span className="text-orange-500">
+                Food
+                <br />
+                Sharing
+              </span>
+              Bringing Communities Together
+            </h1>
+            <p className="mt-5 ml-28">
+              Food sharing is not just about nourishing our bodies; it's about
+              nourishing our souls and fostering connections.
+            </p>
+            <div className="ml-36 mt-4">{btn}</div>
+          </div>
+          <div className="flex-1 my-6">
+            <Image
+              className="w-2/3 mx-auto rounded-xl my-10 shadow-2xl"
+              isZoomed
+              src="https://i.ibb.co/h2rmKZ0/no-revisions-Yr-Eyl-IW5-PDc-unsplash.jpg"
+            ></Image>
+          </div>
+        </div>
+        <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+          <a href="#slide4" className="btn btn-circle">
+            ❮
+          </a>
+          <a href="#slide2" className="btn btn-circle">
+            ❯
+          </a>
+        </div>
+      </div>
+      <div id="slide2" className="carousel-item relative w-full">
+        <div className="flex">
+          <div className="flex-1">
+            <h1 className="text-5xl leading-snug font-bold mt-52 ml-28">
+              Pass the Plate Exploring <br /> the Art of{" "}
+              <span className="text-orange-500">Food Sharing</span>
+            </h1>
+            <p className="mt-5 ml-28">
+              Food sharing is not just about nourishing our bodies; it's about
+              nourishing our souls and fostering connections.
+            </p>
+            <div className="ml-36 mt-4">{btn}</div>
+          </div>
+          <div className="flex-1 my-6">
+            <Image
+              className="w-2/3 mx-auto rounded-xl my-10 shadow-2xl"
+              isZoomed
+              src="https://i.ibb.co/s5rvh0B/sebastian-coman-photography-r3-ZRvv-CZKDk-unsplash.jpg"
+            ></Image>
+          </div>
+        </div>
+        <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+          <a href="#slide1" className="btn btn-circle">
+            ❮
+          </a>
+          <a href="#slide3" className="btn btn-circle">
+            ❯
+          </a>
+        </div>
+      </div>
+      <div id="slide3" className="carousel-item relative w-full">
+        <div className="flex">
+          <div className="flex-1">
+            <h1 className="text-5xl leading-snug font-bold mt-52 ml-28">
+              From Potlucks to Picnics <br />
+              Embracing <span className="text-orange-500">
+                Food Sharing
+              </span>{" "}
+              Traditions
+            </h1>
+            <p className="mt-5 ml-28">
+              Food sharing is not just about nourishing our bodies; it's about
+              nourishing our souls and fostering connections.
+            </p>
+            <div className="ml-36 mt-4">{btn}</div>
+          </div>
+          <div className="flex-1 my-6">
+            <Image
+              className="w-2/3 mx-auto rounded-xl my-10 shadow-2xl"
+              isZoomed
+              src="https://i.ibb.co/pLFfq9L/kyle-nieber-e-E-ff-Apg7o-I-unsplash.jpg"
+            ></Image>
+          </div>
+        </div>
+        <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+          <a href="#slide2" className="btn btn-circle">
+            ❮
+          </a>
+          <a href="#slide4" className="btn btn-circle">
+            ❯
+          </a>
+        </div>
+      </div>
+      <div id="slide4" className="carousel-item relative w-full">
+        <div className="flex">
+          <div className="flex-1">
+            <h1 className="text-5xl leading-snug font-bold mt-52 ml-28">
+              Sharing is Caring <br /> The Power of Community{" "}
+              <span className="text-orange-500">Food Sharing</span>
+            </h1>
+            <p className="mt-5 ml-28">
+              Food sharing is not just about nourishing our bodies; it's about
+              nourishing our souls and fostering connections.
+            </p>
+            <div className="ml-36 mt-4">{btn}</div>
+          </div>
+          <div className="flex-1 my-6">
+            <Image
+              className="w-2/3 mx-auto rounded-xl my-10 shadow-2xl"
+              isZoomed
+              src="https://i.ibb.co/gJDxqZ0/mason-dahl-7-Ax-Xb-Zek-DE-unsplash.jpg"
+            ></Image>
+          </div>
+        </div>
+        <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+          <a href="#slide3" className="btn btn-circle">
+            ❮
+          </a>
+          <a href="#slide1" className="btn btn-circle">
+            ❯
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Banner;
