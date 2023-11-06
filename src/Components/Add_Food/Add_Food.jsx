@@ -66,7 +66,7 @@ const Add_Food = () => {
                 </label>
                 <input
                   type="text"
-                  placeholder="email"
+                  placeholder=" Food Name"
                   name="FoodName"
                   className="input input-bordered"
                   required
