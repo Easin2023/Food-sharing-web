@@ -116,7 +116,8 @@ const Header = () => {
       </div>
       <div className="navbar-end">
         {user ? (
-          <div className="dropdown dropdown-end">
+          <div className="w-44 flex items-center gap-3 bg-orange-100 rounded-full">
+            <div className="dropdown avatar online dropdown-end">
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
               <div className="w-40 rounded-full">
                 <img src={user?.photoURL} />
@@ -139,6 +140,8 @@ const Header = () => {
                 <a onClick={handleLogout}>Logout</a>
               </li>
             </ul>
+          </div>
+          <div className="font-">{user?.displayName}</div>
           </div>
         ) : (
           <Link to="/login">

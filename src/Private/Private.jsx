@@ -7,7 +7,9 @@ const Private = ({children, Loading}) => {
 
      const {user} = useContext(AuthContext)
      if(Loading){
-          return <CircularProgress size="lg" aria-label="Loading..."/>
+          return <div className="flex justify-center items-center h-screen">
+               <CircularProgress size="lg" aria-label="Loading..."/>
+          </div>
      }
 
       if(user){

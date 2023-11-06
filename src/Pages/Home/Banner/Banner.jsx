@@ -1,7 +1,15 @@
 import { Button, Image } from "@nextui-org/react";
 import { Link } from "react-router-dom";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect } from "react";
 
 const Banner = () => {
+
+  useEffect(() => {
+    AOS.init();
+  }, [])
+
   const btn = (
     <>
       <Button color="danger" variant="ghost" className="h-14 text-xl mr-4">
@@ -22,7 +30,7 @@ const Banner = () => {
     <div className="carousel w-full max-h-[800px]">
       <div id="slide1" className="carousel-item relative w-full">
         <div className="flex">
-          <div className="flex-1">
+          <div data-aos="fade-right"  className="flex-1">
             <h1 className="text-5xl leading-snug font-bold mt-52 ml-28">
               The Joy of{" "}
               <span className="text-orange-500">
@@ -38,7 +46,7 @@ const Banner = () => {
             </p>
             <div className="ml-36 mt-4">{btn}</div>
           </div>
-          <div className="flex-1 my-6">
+          <div data-aos="fade-left" className="flex-1 my-6">
             <Image
               className="w-2/3 mx-auto rounded-xl my-10 shadow-2xl"
               isZoomed
@@ -57,7 +65,7 @@ const Banner = () => {
       </div>
       <div id="slide2" className="carousel-item relative w-full">
         <div className="flex">
-          <div className="flex-1">
+          <div data-aos="fade-right" className="flex-1">
             <h1 className="text-5xl leading-snug font-bold mt-52 ml-28">
               Pass the Plate Exploring <br /> the Art of{" "}
               <span className="text-orange-500">Food Sharing</span>
@@ -68,7 +76,7 @@ const Banner = () => {
             </p>
             <div className="ml-36 mt-4">{btn}</div>
           </div>
-          <div className="flex-1 my-6">
+          <div data-aos="fade-left" className="flex-1 my-6">
             <Image
               className="w-2/3 mx-auto rounded-xl my-10 shadow-2xl"
               isZoomed
@@ -87,7 +95,7 @@ const Banner = () => {
       </div>
       <div id="slide3" className="carousel-item relative w-full">
         <div className="flex">
-          <div className="flex-1">
+          <div data-aos="fade-right" className="flex-1">
             <h1 className="text-5xl leading-snug font-bold mt-52 ml-28">
               From Potlucks to Picnics <br />
               Embracing <span className="text-orange-500">
@@ -101,7 +109,7 @@ const Banner = () => {
             </p>
             <div className="ml-36 mt-4">{btn}</div>
           </div>
-          <div className="flex-1 my-6">
+          <div data-aos="fade-left" className="flex-1 my-6">
             <Image
               className="w-2/3 mx-auto rounded-xl my-10 shadow-2xl"
               isZoomed
@@ -120,7 +128,7 @@ const Banner = () => {
       </div>
       <div id="slide4" className="carousel-item relative w-full">
         <div className="flex">
-          <div className="flex-1">
+          <div data-aos="fade-right" className="flex-1">
             <h1 className="text-5xl leading-snug font-bold mt-52 ml-28">
               Sharing is Caring <br /> The Power of Community{" "}
               <span className="text-orange-500">Food Sharing</span>
@@ -131,7 +139,7 @@ const Banner = () => {
             </p>
             <div className="ml-36 mt-4">{btn}</div>
           </div>
-          <div className="flex-1 my-6">
+          <div data-aos="fade-left" className="flex-1 my-6">
             <Image
               className="w-2/3 mx-auto rounded-xl my-10 shadow-2xl"
               isZoomed
