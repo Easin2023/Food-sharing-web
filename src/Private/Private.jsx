@@ -3,16 +3,15 @@ import {useContext} from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import {CircularProgress} from "@nextui-org/react";
 
-const Private = ({children, Loading}) => {
+const Private = ({children}) => {
+     const {user, Loading} = useContext(AuthContext)
 
-     const {user} = useContext(AuthContext)
      if(Loading){
           return <div className="flex justify-center items-center h-screen">
                <CircularProgress size="lg" aria-label="Loading..."/>
           </div>
      }
-
-      if(user){
+      else if(user){
           return children;
      }
 
