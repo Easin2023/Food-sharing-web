@@ -1,13 +1,18 @@
-import {axios} from 'axios';
+import axios from 'axios';
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { useContext } from "react";
+import Swal from 'sweetalert2';
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 
 const FoodDetail = () => {
+  const notify = () => toast("Wow so easy!");
 
   const { user } = useContext(AuthContext);
 
-  const data = useLoaderData();
+  const data1 = useLoaderData();
+  console.log(data1)
   const {
     _id,
     Food_Image,
@@ -18,7 +23,7 @@ const FoodDetail = () => {
     Pickup_Location,
     Expired_Date_Time,
     Additional_Notes,
-  } = data || {};
+  } = data1 || {};
 
   const HandleRequest = (e) => {
     e.preventDefault();
@@ -34,7 +39,7 @@ const FoodDetail = () => {
     const ExpireDate = form.ExpireDate.value;
     const textarea = form.textarea.value;
     const Money = form.Money.value;
-    console.log({
+    const requestInfo ={
       Food_Name,
       Food_Image,
       _id,
@@ -46,8 +51,13 @@ const FoodDetail = () => {
       ExpireDate,
       textarea,
       Money,
-    });
-    axios.post()
+    };
+    axios.post('http://localhost:5000/foodRequest', requestInfo)
+    .then(res => {
+      console.log(res.data)
+      // if(res.data.insertedId){
+      // }
+    })
   };
 
   return (
@@ -62,13 +72,13 @@ const FoodDetail = () => {
         <p className="text-3xl"> Food Quantity : {Food_Quantity}</p>
         <p className="text-3xl">Expired Date/Time : {Expired_Date_Time}</p>
         <p className="text-3xl">{Additional_Notes}</p>
-        <div>
+        <div className='mt-20'>
           {/* You can open the modal using document.getElementById('ID').showModal() method */}
           <button
-            className="btn"
+            className="btn btn-outline"
             onClick={() => document.getElementById("my_modal_4").showModal()}
           >
-            open modal
+            Food Request
           </button>
           <dialog id="my_modal_4" className="modal">
             <div className="modal-box w-11/12 max-w-5xl">
@@ -227,7 +237,8 @@ const FoodDetail = () => {
                     />
                   </div>
               <div className="modal-action">
-                  <button className="btn btn-primary" type="submit">Request</button>
+                  <button className="btn btn-primary" onClick={notify} type="submit">Request</button>
+                  <ToastContainer/>
                 <form method="dialog">
                   {/* if there is a button, it will close the modal */}
                   <button className="btn mr-3">Close</button>
