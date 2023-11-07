@@ -7,7 +7,6 @@ import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
 
 const FoodDetail = () => {
-  const notify = () => toast("Wow so easy!");
 
   const { user } = useContext(AuthContext);
 
@@ -55,8 +54,13 @@ const FoodDetail = () => {
     axios.post('http://localhost:5000/foodRequest', requestInfo)
     .then(res => {
       console.log(res.data)
-      // if(res.data.insertedId){
-      // }
+      console.log(res.data.error)
+      if(res.data.error){
+        toast.error("sorry is food already requested")
+      }
+      if(res.data.insertedId){
+        toast.success("request success fully!");
+      }
     })
   };
 
@@ -237,7 +241,7 @@ const FoodDetail = () => {
                     />
                   </div>
               <div className="modal-action">
-                  <button className="btn btn-primary" onClick={notify} type="submit">Request</button>
+                  <button className="btn btn-primary" type="submit">Request</button>
                   <ToastContainer/>
                 <form method="dialog">
                   {/* if there is a button, it will close the modal */}
