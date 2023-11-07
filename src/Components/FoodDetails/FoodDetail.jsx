@@ -2,7 +2,6 @@ import axios from 'axios';
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { useContext } from "react";
-import Swal from 'sweetalert2';
 import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
 
