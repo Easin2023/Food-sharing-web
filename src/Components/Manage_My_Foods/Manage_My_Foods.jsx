@@ -1,16 +1,36 @@
 import { useQuery } from "@tanstack/react-query";
-import {MdModeEditOutline} from 'react-icons/md';
-import {RiDeleteBin6Fill} from 'react-icons/ri';
+import axios from "axios";
+import { useState } from "react";
+import { MdModeEditOutline } from "react-icons/md";
+import { RiDeleteBin6Fill } from "react-icons/ri";
+import Swal from "sweetalert2";
 
 const Manage_My_Foods = () => {
-  const { data } = useQuery({
+  const { data,  refetch } = useQuery({
     queryKey: ["addedFoodData"],
     queryFn: async () => {
       const data = await fetch("http://localhost:5000/addedFoodData");
       return await data.json();
     },
   });
-  console.log(data);
+
+  const handleUpdate = (e) => {};
+
+  const handleDelete = (e) => {
+    axios.delete(`http://localhost:5000/addedFoodData/${e}`).then((res) => {
+      console.log(res.data);
+      if (res.data.deletedCount) {
+        Swal.fire({
+          title: "delate success!",
+          text: "Your product has been delayed!",
+          icon: "success",
+        });
+        refetch();
+      }
+    });
+  };
+
+
   return (
     <div>
       <h1 className="text-5xl my-12 font-semibold border-l-5 border-red-500 ml-16 ">
@@ -43,7 +63,9 @@ const Manage_My_Foods = () => {
                       </div>
                       <div>
                         <div className="font-bold">{da.Food_Name}</div>
-                        <div className="text-sm opacity-50">Quantity {da.Food_Quantity}</div>
+                        <div className="text-sm opacity-50">
+                          Quantity {da.Food_Quantity}
+                        </div>
                       </div>
                     </div>
                   </td>
@@ -51,14 +73,24 @@ const Manage_My_Foods = () => {
                     {da.Donator_Name}
                     <br />
                     <span className="badge badge-ghost badge-sm">
-                    Location: {da.Pickup_Location}
+                      Location: {da.Pickup_Location}
                     </span>
                   </td>
                   <td>{da.Expired_Date_Time}</td>
                   <th>
-                    <button className="btn btn-square  mr-2"><RiDeleteBin6Fill  className="text-2xl"></RiDeleteBin6Fill></button>
-                    <button className="btn btn-square mr-3"><MdModeEditOutline className="text-2xl"></MdModeEditOutline></button>
-                    <button className="btn btn-circle ">  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg></button>
+                    <button
+                      onClick={() => handleDelete(da._id)}
+                      className="btn btn-square  mr-2"
+                    >
+                      <RiDeleteBin6Fill
+                        onClick={() => handleUpdate(da._id)}
+                        className="text-2xl"
+                      ></RiDeleteBin6Fill>
+                    </button>
+                    <button className="btn btn-square mr-3">
+                      <MdModeEditOutline className="text-2xl"></MdModeEditOutline>
+                    </button>
+                    <button className="btn btn-outline ">Manage</button>
                   </th>
                 </tr>
               ))}
