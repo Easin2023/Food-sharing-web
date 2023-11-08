@@ -27,7 +27,7 @@ const AvailableFoodsCards = ({ availableFood }) => {
           <hr />
         </div>
         <figure className="px-10 ">
-          <img src={Food_Image} alt="Shoes" className="rounded-xl" />
+          <img className="w-60 h-40" src={Food_Image} alt="Shoes" className="rounded-xl" />
         </figure>
         <div className="card-body">
           <div className="flex justify-between items-center">

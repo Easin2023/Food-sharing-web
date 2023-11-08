@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import {useContext, useState} from "react"
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 
@@ -6,6 +6,9 @@ const Login = () => {
 
      const {login, googleLogin} = useContext(AuthContext); 
      const [error, setError] = useState('')
+     const location = useLocation()
+     const goto = useNavigate();
+     console.log(location)
 
 
 
@@ -19,6 +22,8 @@ const Login = () => {
           login(email, password)
           .then(result => {
                console.log('user login success', result.user)
+               goto(location?.state ? location?.state : '/');
+
           })
           .catch(error => {
                console.log(error)

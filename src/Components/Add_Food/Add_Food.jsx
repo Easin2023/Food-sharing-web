@@ -2,10 +2,15 @@ import { Image } from "@nextui-org/react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import axios from "axios";
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Add_Food = () => {
+  const { user } = useContext(AuthContext);
+  const email = user.email;
+  const Donator_Name = user.displayName;
+
   useEffect(() => {
     AOS.init();
   }, []);
@@ -13,33 +18,37 @@ const Add_Food = () => {
   const HandleAddFood = (e) => {
     e.preventDefault();
     const form = e.target;
-    const FoodName = form.FoodName.value;
-    const ExpiredDate = form.ExpiredDate.value;
-    const FoodImage = form.FoodImage.value;
-    const FoodQuantity = form.FoodQuantity.value;
-    const PickupLocation = form.PickupLocation.value;
-    const AdditionalNotes = form.AdditionalNotes.value;
+    const Food_Name = form.FoodName.value;
+    const Expired_Date_Time = form.ExpiredDate.value;
+    const Food_Image = form.FoodImage.value;
+    const Food_Quantity = form.FoodQuantity.value;
+    const Pickup_Location = form.PickupLocation.value;
+    const Additional_Notes = form.AdditionalNotes.value;
     const addFoodInfo = {
-      FoodName,
-      FoodImage,
-      ExpiredDate,
-      FoodQuantity,
-      PickupLocation,
-      AdditionalNotes,
+      Food_Image,
+      Food_Name,
+      Food_Quantity,
+      Pickup_Location,
+      Expired_Date_Time,
+      Additional_Notes,
+      email,
+      Donator_Name
+      
     };
-    axios.post('http://localhost:5000/addedFood', addFoodInfo)
-    .then(res => {
-     if(res.data.insertedId){
+    axios
+      .post("http://localhost:5000/addedFood", addFoodInfo)
+      .then((res) => {
+        if (res.data.insertedId) {
           Swal.fire({
-               title: "Thanks!",
-               text: "Your Food Added!",
-               icon: "success"
-             });
-     }
-    })
-    .catch(error => {
-     console.log(error)
-    })
+            title: "Thanks!",
+            text: "Your Food Added!",
+            icon: "success",
+          });
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (

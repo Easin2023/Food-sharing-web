@@ -17,6 +17,7 @@ const Available_Foods = () => {
           <span className="loading loading-dots loading-lg"></span>
      </div>
   }
+  console.log(data)
 
   return (
     <div>
