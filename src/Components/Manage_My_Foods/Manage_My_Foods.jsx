@@ -1,12 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { useState } from "react";
 import { MdModeEditOutline } from "react-icons/md";
 import { RiDeleteBin6Fill } from "react-icons/ri";
+import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const Manage_My_Foods = () => {
-  const { data,  refetch } = useQuery({
+  const { data, refetch } = useQuery({
     queryKey: ["addedFoodData"],
     queryFn: async () => {
       const data = await fetch("http://localhost:5000/addedFoodData");
@@ -14,7 +14,9 @@ const Manage_My_Foods = () => {
     },
   });
 
-  const handleUpdate = (e) => {};
+  const handleUpdate = (e) => {
+    // axios.put("http://localhost:5000/addedFoodData/${e}");
+  };
 
   const handleDelete = (e) => {
     axios.delete(`http://localhost:5000/addedFoodData/${e}`).then((res) => {
@@ -29,7 +31,6 @@ const Manage_My_Foods = () => {
       }
     });
   };
-
 
   return (
     <div>
@@ -82,14 +83,13 @@ const Manage_My_Foods = () => {
                       onClick={() => handleDelete(da._id)}
                       className="btn btn-square  mr-2"
                     >
-                      <RiDeleteBin6Fill
-                        onClick={() => handleUpdate(da._id)}
-                        className="text-2xl"
-                      ></RiDeleteBin6Fill>
+                      <RiDeleteBin6Fill className="text-2xl"></RiDeleteBin6Fill>
                     </button>
-                    <button className="btn btn-square mr-3">
-                      <MdModeEditOutline className="text-2xl"></MdModeEditOutline>
-                    </button>
+                    <Link to={`/foodUpdate/${da._id}`}>
+                      <button className="btn btn-square  mr-2">
+                        <MdModeEditOutline className="text-2xl"></MdModeEditOutline>
+                      </button>
+                    </Link>
                     <button className="btn btn-outline ">Manage</button>
                   </th>
                 </tr>
