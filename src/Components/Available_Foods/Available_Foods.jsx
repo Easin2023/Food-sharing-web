@@ -7,7 +7,7 @@ const Available_Foods = () => {
     queryKey: ["addedFoodDataFindToExpiredDate"],
     queryFn: async () => {
       const data = fetch(
-        "http://localhost:5000/addedFoodDataFindToExpiredDate"
+        "https://food-sharing-server-blond.vercel.app/addedFoodDataFindToExpiredDate"
       );
       return (await data).json();
     },

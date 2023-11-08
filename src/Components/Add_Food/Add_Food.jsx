@@ -36,7 +36,7 @@ const Add_Food = () => {
       
     };
     axios
-      .post("http://localhost:5000/addedFood", addFoodInfo)
+      .post("https://food-sharing-server-blond.vercel.app/addedFood", addFoodInfo)
       .then((res) => {
         if (res.data.insertedId) {
           Swal.fire({

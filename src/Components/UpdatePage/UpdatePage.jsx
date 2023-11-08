@@ -30,7 +30,7 @@ const UpdatePage = () => {
       AdditionalNotes,
     };
     console.log(updateFoodInfo)
-    axios.put(`http://localhost:5000/updateFoodData/${Loader._id}`, updateFoodInfo)
+    axios.put(`https://food-sharing-server-blond.vercel.app/updateFoodData/${Loader._id}`, updateFoodInfo)
     .then(res => {
       console.log(res.data)
      if(res.data.modifiedCount){

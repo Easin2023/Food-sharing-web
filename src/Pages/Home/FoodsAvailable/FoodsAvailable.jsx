@@ -16,7 +16,7 @@ const FoodsAvailable = () => {
   const { data, isLoading, isFetching, refetch } = useQuery({
     queryKey: ["foodData"],
     queryFn: async () => {
-      const data = fetch("http://localhost:5000/addedFoodData");
+      const data = fetch("https://food-sharing-server-blond.vercel.app/addedFoodData");
       return (await data).json();
     },
   });

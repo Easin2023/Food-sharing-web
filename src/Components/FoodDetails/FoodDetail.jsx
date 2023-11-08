@@ -8,17 +8,15 @@ import { ToastContainer, toast } from 'react-toastify';
 const FoodDetail = () => {
 
   const { user } = useContext(AuthContext);
+  console.log(user)
 
   const data1 = useLoaderData();
   console.log(data1)
   const {
-    _id,
     Food_Image,
     Food_Name,
-    Donator_Image,
     Donator_Name,
     Food_Quantity,
-    Pickup_Location,
     Expired_Date_Time,
     Additional_Notes,
   } = data1 || {};
@@ -27,6 +25,7 @@ const FoodDetail = () => {
     e.preventDefault();
     const form = e.target;
     const Food_Name = form.Food_Name.value;
+    const user_Image = form.user_Image.value;
     const name = form.name.value;
     const email = form.email.value;
     const userEmail = form.userEmail.value;
@@ -35,6 +34,7 @@ const FoodDetail = () => {
     const Money = form.Money.value;
     const requestInfo ={
       Food_Name,
+      user_Image,
       name,
       email,
       userEmail,
@@ -42,7 +42,7 @@ const FoodDetail = () => {
       Money,
       textarea
     };
-    axios.post('http://localhost:5000/foodRequest', requestInfo)
+    axios.post('https://food-sharing-server-blond.vercel.app/foodRequest', requestInfo)
     .then(res => {
       console.log(res.data)
       console.log(res.data.error)
@@ -97,23 +97,10 @@ const FoodDetail = () => {
                       <span className="label-text ">Food Image</span>
                     </label>
                     <input
-                      defaultValue={Food_Image}
+                      defaultValue={user?.photoURL}
                       type="text"
                       placeholder="Food Image"
-                      name="Food_Image"
-                      className="input input-bordered"
-                      required
-                    />
-                  </div>{" "}
-                  <div className="form-control flex-1">
-                    <label className="label">
-                      <span className="label-text ">Food Id</span>
-                    </label>
-                    <input
-                      defaultValue={_id}
-                      type="text"
-                      placeholder="_id"
-                      name="_id"
+                      name="user_Image"
                       className="input input-bordered"
                       required
                     />

@@ -14,14 +14,14 @@ const Manage_My_Foods = () => {
     queryKey: ["addedFoodData"],
     queryFn: async () => {
       const data = await fetch(
-        `http://localhost:5000/addedFoodData?email=${user?.email}`
+        `https://food-sharing-server-blond.vercel.app/addedFoodData?email=${user?.email}`
       );
       return await data.json();
     },
   });
 
   const handleDelete = (e) => {
-    axios.delete(`http://localhost:5000/addedFoodData/${e}`).then((res) => {
+    axios.delete(`https://food-sharing-server-blond.vercel.app/addedFoodData/${e}`).then((res) => {
       console.log(res.data);
       if (res.data.deletedCount) {
         Swal.fire({

@@ -6,12 +6,12 @@ import SignUp from "../Pages/SignUp/SignUp";
 import Private from "../Private/Private";
 import Add_Food from "../Components/Add_Food/Add_Food";
 import Manage_My_Foods from "../Components/Manage_My_Foods/Manage_My_Foods";
-import My_Food_Request from "../Components/Manage_Single_Food/Manage_Single_Food";
 import Home from "../Pages/Home/Home";
 import Available_Foods from "../Components/Available_Foods/Available_Foods";
 import FoodDetail from "../Components/FoodDetails/FoodDetail";
 import UpdatePage from "../Components/UpdatePage/UpdatePage";
 import Manage_Single_Food from "../Components/Manage_Single_Food/Manage_Single_Food";
+import My_Food_Request from "../Components/My_Food_Request/My_Food_Request";
 
 const Router = createBrowserRouter([
   {
@@ -54,12 +54,12 @@ const Router = createBrowserRouter([
      {
       path: "/foodDetail/:id",
       element:<Private><FoodDetail></FoodDetail></Private>,
-      loader: ({params}) => fetch(`http://localhost:5000/addedFoodData/${params.id}`)
+      loader: ({params}) => fetch(`https://food-sharing-server-blond.vercel.app/addedFoodData/${params.id}`)
      },
      {
       path: '/foodUpdate/:id',
       element:<UpdatePage></UpdatePage>,
-      loader: ({params}) => fetch(`http://localhost:5000/addedFoodData/${params.id}`)
+      loader: ({params}) => fetch(`https://food-sharing-server-blond.vercel.app/addedFoodData/${params.id}`)
      }
     ]
   },
