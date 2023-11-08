@@ -19,8 +19,8 @@ const Header = () => {
           isPending
             ? "pending"
             : isActive
-            ? "btn btn-primary sm:mb-4 mr-5 text-xl"
-            : "mr-5 btn text-xl"
+            ? "btn btn-primary btn-sm sm:mb-4 mr-5 "
+            : "mr-5 btn btn-sm "
         }
       >
         Home
@@ -31,8 +31,8 @@ const Header = () => {
           isPending
             ? "pending"
             : isActive
-            ? "btn btn-primary sm:mb-4 mr-5 text-xl"
-            : "mr-5 btn text-xl sm:mb-4 "
+            ? "btn btn-primary btn-sm sm:mb-4 mr-5 "
+            : "mr-5 btn btn-sm  sm:mb-4 "
         }
       >
         Available Foods
@@ -45,8 +45,8 @@ const Header = () => {
               isPending
                 ? "pending"
                 : isActive
-                ? " mr-5 btn btn-primary sm:mb-4 text-xl"
-                : "mr-5 btn text-xl sm:mb-4  "
+                ? " mr-5 btn btn-primary btn-sm sm:mb-4 "
+                : "mr-5 btn btn-sm  sm:mb-4  "
             }
           >
             Add Food
@@ -57,8 +57,8 @@ const Header = () => {
               isPending
                 ? "pending"
                 : isActive
-                ? " btn btn-primary sm:mb-4 mr-5 text-xl"
-                : "mr-5 btn text-xl sm:mb-4 "
+                ? " btn btn-primary btn-sm sm:mb-4 mr-5 "
+                : "mr-5 btn btn-sm  sm:mb-4 "
             }
           >
             Manage My Foods
@@ -69,8 +69,8 @@ const Header = () => {
               isPending
                 ? "pending"
                 : isActive
-                ? "btn btn-primary sm:mb-4 mr-5 text-xl"
-                : "mr-5 btn text-xl sm:mb-4 "
+                ? "btn btn-primary btn-sm sm:mb-4 mr-5 "
+                : "mr-5 btn btn-sm  sm:mb-4 "
             }
           >
             My Food Request

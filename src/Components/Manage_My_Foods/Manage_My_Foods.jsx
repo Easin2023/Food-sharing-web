@@ -14,10 +14,6 @@ const Manage_My_Foods = () => {
     },
   });
 
-  const handleUpdate = (e) => {
-    // axios.put("http://localhost:5000/addedFoodData/${e}");
-  };
-
   const handleDelete = (e) => {
     axios.delete(`http://localhost:5000/addedFoodData/${e}`).then((res) => {
       console.log(res.data);

@@ -1,5 +1,5 @@
 import { Image } from "@nextui-org/react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import AOS from "aos";
 import { useEffect } from "react";
 import Swal from "sweetalert2";
@@ -10,6 +10,7 @@ const UpdatePage = () => {
           AOS.init();
         }, []);
   const Loader = useLoaderData();
+  const goTo = useNavigate();
 
   const HandleUpdateData = (e) => {
     e.preventDefault();
@@ -29,16 +30,17 @@ const UpdatePage = () => {
       AdditionalNotes,
     };
     console.log(updateFoodInfo)
-    axios.put('http://localhost:5000/addedFood', updateFoodInfo)
+    axios.put(`http://localhost:5000/updateFoodData/${Loader._id}`, updateFoodInfo)
     .then(res => {
       console.log(res.data)
-    //  if(res.data.insertedId){
-    //       Swal.fire({
-    //            title: "Thanks!",
-    //            text: "Your Food Added!",
-    //            icon: "success"
-    //          });
-    //  }
+     if(res.data.modifiedCount){
+          Swal.fire({
+               title: "ok success!",
+               text: "Your update success!",
+               icon: "success"
+             });
+     }
+     goTo('/Available_Foods')
     })
     .catch(error => {
      console.log(error)
@@ -59,7 +61,7 @@ const UpdatePage = () => {
             <Image
               className="h-96"
               isZoomed
-              src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8NXx8fGVufDB8fHx8fA%3D%3D"
+              src={Loader.Food_Image}
             ></Image>
           </div>
         </div>
@@ -71,6 +73,7 @@ const UpdatePage = () => {
                   <span className="label-text text-white">Food Name</span>
                 </label>
                 <input
+                defaultValue={Loader.Food_Name}
                   type="text"
                   placeholder=" Food Name"
                   name="FoodName"
@@ -85,6 +88,7 @@ const UpdatePage = () => {
                   </span>
                 </label>
                 <input
+                defaultValue={Loader.Expired_Date_Time}
                   type="date"
                   placeholder="Expired Date"
                   name="ExpiredDate"
@@ -98,6 +102,7 @@ const UpdatePage = () => {
                 <span className="label-text text-white">Food Image</span>
               </label>
               <input
+              defaultValue={Loader.Food_Image}
                 type="url"
                 placeholder="Food Image"
                 name="FoodImage"
@@ -111,6 +116,7 @@ const UpdatePage = () => {
                   <span className="label-text text-white">Food Quantity</span>
                 </label>
                 <input
+                defaultValue={Loader.Food_Quantity}
                   type="number"
                   placeholder="Food Quantity"
                   name="FoodQuantity"
@@ -123,6 +129,7 @@ const UpdatePage = () => {
                   <span className="label-text text-white">Pickup Location</span>
                 </label>
                 <input
+                defaultValue={Loader.Pickup_Location}
                   type="text"
                   placeholder="Pickup Location"
                   name="PickupLocation"
