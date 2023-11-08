@@ -27,28 +27,20 @@ const FoodDetail = () => {
     e.preventDefault();
     const form = e.target;
     const Food_Name = form.Food_Name.value;
-    const Food_Image = form.Food_Image.value;
-    const _id = form._id.value;
     const name = form.name.value;
     const email = form.email.value;
     const userEmail = form.userEmail.value;
     const time = form.time.value;
-    const Pickup_Location = form.Pickup_Location.value;
-    const ExpireDate = form.ExpireDate.value;
     const textarea = form.textarea.value;
     const Money = form.Money.value;
     const requestInfo ={
       Food_Name,
-      Food_Image,
-      _id,
       name,
       email,
       userEmail,
       time,
-      Pickup_Location,
-      ExpireDate,
-      textarea,
       Money,
+      textarea
     };
     axios.post('http://localhost:5000/foodRequest', requestInfo)
     .then(res => {
@@ -182,48 +174,6 @@ const FoodDetail = () => {
                       className="input input-bordered"
                       required
                     />
-                  </div>
-                  <div className="form-control flex-1">
-                    <label className="label">
-                      <span className="label-text ">
-                        Pickup Location
-                      </span>
-                    </label>
-                    <input
-                      defaultValue={Pickup_Location}
-                      type="text"
-                      placeholder="_id"
-                      name="Pickup_Location"
-                      className="input input-bordered"
-                      required
-                    />
-                  </div>
-                  <div className="form-control flex-1">
-                    <label className="label">
-                      <span className="label-text ">Expire Date</span>
-                    </label>
-                    <input
-                      defaultValue={Expired_Date_Time}
-                      type="text"
-                      placeholder="_id"
-                      name="ExpireDate"
-                      className="input input-bordered"
-                      required
-                    />
-                  </div>
-                  <div className="form-control flex-1">
-                    <label className="label">
-                      <span className="label-text ">
-                        Additional Notes
-                      </span>
-                    </label>
-                    <textarea
-                      className="bg-slate-200 rounded-2xl"
-                      name="textarea"
-                      id=""
-                      cols="10"
-                      rows="5"
-                    ></textarea>
                   </div>
                   <div className="form-control flex-1">
                     <label className="label">

@@ -92,7 +92,7 @@ const Manage_My_Foods = () => {
                         <MdModeEditOutline className="text-2xl"></MdModeEditOutline>
                       </button>
                     </Link>
-                    <Link to={`/My_Food_Request/:${da._id}`}>
+                    <Link to={`/Manage_Single_Food/:${da._id}`}>
                       <button className="btn btn-outline ">Manage</button>
                     </Link>
                   </th>
