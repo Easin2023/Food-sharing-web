@@ -1,20 +1,21 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { MdModeEditOutline } from "react-icons/md";
-import { RiDeleteBin6Fill } from "react-icons/ri"; 
-import { useContext } from "react"; 
+import { RiDeleteBin6Fill } from "react-icons/ri";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Manage_My_Foods = () => {
-
-  const {user} = useContext(AuthContext)
+  const { user } = useContext(AuthContext);
 
   const { data, refetch } = useQuery({
     queryKey: ["addedFoodData"],
     queryFn: async () => {
-      const data = await fetch(`http://localhost:5000/addedFoodData?email=${user?.email}`);
+      const data = await fetch(
+        `http://localhost:5000/addedFoodData?email=${user?.email}`
+      );
       return await data.json();
     },
   });
@@ -91,7 +92,9 @@ const Manage_My_Foods = () => {
                         <MdModeEditOutline className="text-2xl"></MdModeEditOutline>
                       </button>
                     </Link>
-                    <button className="btn btn-outline ">Manage</button>
+                    <Link to={`/My_Food_Request/:${da._id}`}>
+                      <button className="btn btn-outline ">Manage</button>
+                    </Link>
                   </th>
                 </tr>
               ))}
