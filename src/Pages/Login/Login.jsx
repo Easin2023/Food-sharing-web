@@ -4,11 +4,12 @@ import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Login = () => {
 
-     const {login, googleLogin} = useContext(AuthContext); 
+     const { login, googleLogin} = useContext(AuthContext); 
      const [error, setError] = useState('')
      const location = useLocation()
      const goto = useNavigate();
      console.log(location)
+     const [user, setUser] = useState([])
 
 
 
@@ -23,6 +24,7 @@ const Login = () => {
           .then(result => {
                console.log('user login success', result.user)
                goto(location?.state ? location?.state : '/');
+               setUser(result.user)
 
           })
           .catch(error => {
@@ -31,8 +33,11 @@ const Login = () => {
           })
           
      }
-     const HandleGoogle = () => {
+     const HandleGoogle = async () => {
       googleLogin();
+      if(user){
+       return await goto(location?.state ? location?.state : '/');
+      }
      }
 
 

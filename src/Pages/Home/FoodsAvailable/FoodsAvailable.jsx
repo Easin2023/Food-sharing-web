@@ -31,7 +31,7 @@ const FoodsAvailable = () => {
         <span className="pl-3">Available Foods</span>
       </h1>
 
-      <div data-aos="fade-up" data-aos-duration="3000" className="grid grid-cols-3 gap-8 mt-32">
+      <div data-aos="fade-up" data-aos-duration="3000" className="grid md:grid-cols-2 grid-cols-1 lg:grid-cols-3 gap-8 mt-32">
         {data.slice(0, 6).map((foodData) => (
           <FoodCard key={foodData._id} foodCard={foodData}></FoodCard>
         ))}

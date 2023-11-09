@@ -12,13 +12,13 @@ const Banner = () => {
 
   const btn = (
     <>
-      <Button color="danger" variant="ghost" className="h-14 text-xl mr-4">
+      <Button color="danger" variant="ghost" className="lg:h-14 md:h-7 md:text-[10px] lg:text-xl mr-4">
         learn more
       </Button>
       <Link to="/signUp">
         <Button
           radius="md"
-          className="bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg text-xl h-14"
+          className="bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg md:h-7 md:text-[10px] lg:text-xl lg:h-14"
         >
           sign up
         </Button>
@@ -29,9 +29,9 @@ const Banner = () => {
   return (
     <div className="carousel w-full max-h-[800px]">
       <div id="slide1" className="carousel-item relative w-full">
-        <div className="flex">
+        <div className="grid lg:grid-cols-2 md:grid-cols-1 grid-cols-1">
           <div data-aos="fade-right"  className="flex-1">
-            <h1 className="text-5xl leading-snug font-bold mt-52 ml-28">
+            <h1 className="lg:text-5xl md:text-3xl text-2xl leading-snug font-bold mt-52 ml-28">
               The Joy of{" "}
               <span className="text-orange-500">
                 Food
@@ -40,7 +40,7 @@ const Banner = () => {
               </span>
               Bringing Communities Together
             </h1>
-            <p className="mt-5 ml-28">
+            <p className="mt-5 lg:text-[15px] text-[10px] ml-28">
               Food sharing is not just about nourishing our bodies; it's about
               nourishing our souls and fostering connections.
             </p>
@@ -64,13 +64,13 @@ const Banner = () => {
         </div>
       </div>
       <div id="slide2" className="carousel-item relative w-full">
-        <div className="flex">
+        <div className="grid lg:grid-cols-2 md:grid-cols-1 grid-cols-1">
           <div data-aos="fade-right" className="flex-1">
-            <h1 className="text-5xl leading-snug font-bold mt-52 ml-28">
+            <h1 className="lg:text-5xl md:text-3xl text-2xl leading-snug font-bold mt-52 ml-28">
               Pass the Plate Exploring <br /> the Art of{" "}
               <span className="text-orange-500">Food Sharing</span>
             </h1>
-            <p className="mt-5 ml-28">
+            <p className="mt-5 lg:text-[15px] text-[10px] ml-28">
               Food sharing is not just about nourishing our bodies; it's about
               nourishing our souls and fostering connections.
             </p>
@@ -94,16 +94,16 @@ const Banner = () => {
         </div>
       </div>
       <div id="slide3" className="carousel-item relative w-full">
-        <div className="flex">
+        <div className="grid lg:grid-cols-2 md:grid-cols-1 grid-cols-1">
           <div data-aos="fade-right" className="flex-1">
-            <h1 className="text-5xl leading-snug font-bold mt-52 ml-28">
+            <h1 className="lg:text-5xl md:text-3xl text-2xl leading-snug font-bold mt-52 ml-28">
               From Potlucks to Picnics <br />
               Embracing <span className="text-orange-500">
                 Food Sharing
               </span>{" "}
               Traditions
             </h1>
-            <p className="mt-5 ml-28">
+            <p className="mt-5 lg:text-[15px] text-[10px] ml-28">
               Food sharing is not just about nourishing our bodies; it's about
               nourishing our souls and fostering connections.
             </p>
@@ -127,13 +127,13 @@ const Banner = () => {
         </div>
       </div>
       <div id="slide4" className="carousel-item relative w-full">
-        <div className="flex">
+        <div className="grid lg:grid-cols-2 md:grid-cols-1 grid-cols-1">
           <div data-aos="fade-right" className="flex-1">
-            <h1 className="text-5xl leading-snug font-bold mt-52 ml-28">
+            <h1 className="lg:text-5xl md:text-3xl text-2xl leading-snug font-bold mt-52 ml-28">
               Sharing is Caring <br /> The Power of Community{" "}
               <span className="text-orange-500">Food Sharing</span>
             </h1>
-            <p className="mt-5 ml-28">
+            <p className="mt-5 lg:text-[15px] text-[10px] ml-28">
               Food sharing is not just about nourishing our bodies; it's about
               nourishing our souls and fostering connections.
             </p>

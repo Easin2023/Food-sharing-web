@@ -18,6 +18,7 @@ const FoodDetail = () => {
     Donator_Name,
     Food_Quantity,
     Expired_Date_Time,
+    Pickup_Location,
     Additional_Notes,
   } = data1 || {};
 
@@ -25,23 +26,25 @@ const FoodDetail = () => {
     e.preventDefault();
     const form = e.target;
     const Food_Name = form.Food_Name.value;
-    const user_Image = form.user_Image.value;
+    const Food_Image = form.Food_Image.value;
     const name = form.name.value;
     const email = form.email.value;
     const userEmail = form.userEmail.value;
     const time = form.time.value;
-    const textarea = form.textarea.value;
     const Money = form.Money.value;
     const requestInfo ={
       Food_Name,
-      user_Image,
+      user_Image: user?.photoURL,
+      Food_Image,
       name,
+      Pickup_Location,
       email,
       userEmail,
+      Expired_Date_Time,
       time,
       Money,
-      textarea
     };
+    console.log(requestInfo)
     axios.post('https://food-sharing-server-blond.vercel.app/foodRequest', requestInfo)
     .then(res => {
       console.log(res.data)
@@ -97,10 +100,10 @@ const FoodDetail = () => {
                       <span className="label-text ">Food Image</span>
                     </label>
                     <input
-                      defaultValue={user?.photoURL}
-                      type="text"
+                      defaultValue={Food_Image}
+                      type="url"
                       placeholder="Food Image"
-                      name="user_Image"
+                      name="Food_Image"
                       className="input input-bordered"
                       required
                     />
