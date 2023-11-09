@@ -14,7 +14,7 @@ const Manage_My_Foods = () => {
     queryKey: ["addedFoodData"],
     queryFn: async () => {
       const data = await fetch(
-        `https://food-sharing-server-blond.vercel.app/addedFoodData?email=${user?.email}`,
+        `https://food-sharing-server-blond.vercel.app/addedFoodData?email=${user?.email}`
       );
       return await data.json();
     },
