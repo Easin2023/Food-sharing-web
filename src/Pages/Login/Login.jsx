@@ -1,46 +1,48 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import {useContext, useState} from "react"
+import { useContext, useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import axios from "axios";
 
 const Login = () => {
+  const { login, googleLogin } = useContext(AuthContext);
+  const [error, setError] = useState("");
+  const location = useLocation();
+  const goto = useNavigate();
+  console.log(location);
+  const [user, setUser] = useState([]);
 
-     const { login, googleLogin} = useContext(AuthContext); 
-     const [error, setError] = useState('')
-     const location = useLocation()
-     const goto = useNavigate();
-     console.log(location)
-     const [user, setUser] = useState([])
+  const HandleSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
 
-
-
-     const HandleSubmit = e => {
-          e.preventDefault();
-          const form = e.target;
-          const email = form.email.value;
-          const password = form.password.value;
-          console.log({ email, password})
-
-          login(email, password)
-          .then(result => {
-               console.log('user login success', result.user)
-               goto(location?.state ? location?.state : '/');
-               setUser(result.user)
-
-          })
-          .catch(error => {
-               console.log(error)
-               setError('Your login is incorrect, please check your email and password again')
-          })
-          
-     }
-     const HandleGoogle = async () => {
-      googleLogin();
-      if(user){
-       return await goto(location?.state ? location?.state : '/');
-      }
-     }
-
-
+    login(email, password)
+      .then((result) => {
+        console.log("user login success", result.user);
+        setUser(result.user);
+        const user2 = {email}
+        axios.post("http://localhost:5000/jwt", user2 , {withCredentials: true})
+        .then((res) => {
+          console.log(res.data);
+          if(res.data.success){
+            goto(location?.state ? location?.state : "/");
+          }
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+        setError(
+          "Your login is incorrect, please check your email and password again"
+        );
+      });
+  };
+  const HandleGoogle = async () => {
+    googleLogin();
+    if (user) {
+      return await goto(location?.state ? location?.state : "/");
+    }
+  };
 
   return (
     <div className="flex  justify-center items-center h-screen gap-20">
@@ -49,28 +51,28 @@ const Login = () => {
           Login <span className="text-orange-600">Feast Bar</span>
         </h1>
         <form onSubmit={HandleSubmit} action="" className="space-y-6">
-            <div className="space-y-1 text-sm flex-1">
-              <label className="block text-gray-400">UserEmail</label>
-              <input
-                type="text"
-                name="email"
-                id="username"
-                required
-                placeholder="email"
-                className="w-full px-4 py-3 rounded-md border-gray-700 bg-gray-900 text-gray-100 focus:border-violet-400"
-              />
-            </div>
-            <div className="space-y-1 text-sm flex-1">
-              <label className="block text-gray-400">Username</label>
-              <input
-                type="password"
-                name="password"
-                required
-                placeholder="password"
-                className="w-full px-4 py-3 rounded-md border-gray-700 bg-gray-900 text-gray-100 focus:border-violet-400"
-              />
-              <p className="text-red-500">{error}</p>
-            </div>
+          <div className="space-y-1 text-sm flex-1">
+            <label className="block text-gray-400">UserEmail</label>
+            <input
+              type="text"
+              name="email"
+              id="username"
+              required
+              placeholder="email"
+              className="w-full px-4 py-3 rounded-md border-gray-700 bg-gray-900 text-gray-100 focus:border-violet-400"
+            />
+          </div>
+          <div className="space-y-1 text-sm flex-1">
+            <label className="block text-gray-400">Username</label>
+            <input
+              type="password"
+              name="password"
+              required
+              placeholder="password"
+              className="w-full px-4 py-3 rounded-md border-gray-700 bg-gray-900 text-gray-100 focus:border-violet-400"
+            />
+            <p className="text-red-500">{error}</p>
+          </div>
           <button className="btn btn-block" type="submit">
             Sign in
           </button>
@@ -83,7 +85,11 @@ const Login = () => {
           <div className="flex-1 h-px sm:w-16 bg-gray-700"></div>
         </div>
         <div className="flex justify-center space-x-4">
-          <button onClick={HandleGoogle} aria-label="Log in with Google" className=" btn btn-circle ">
+          <button
+            onClick={HandleGoogle}
+            aria-label="Log in with Google"
+            className=" btn btn-circle "
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 32 32"
@@ -94,7 +100,7 @@ const Login = () => {
           </button>
         </div>
         <p className="text-xs text-center sm:px-6 text-gray-400">
-         Do not have an account?
+          Do not have an account?
           <Link to="/signUp" className=" text-white font-bold ml-2">
             SignUp
           </Link>

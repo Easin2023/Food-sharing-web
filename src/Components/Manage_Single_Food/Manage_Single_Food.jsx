@@ -45,7 +45,7 @@ const Manage_Single_Food = () => {
             icon: "success",
           });
           axios
-            .put(`https://food-sharing-server-blond.vercel.app/foodRequest/${e}`, {
+            .put(`http://localhost:5000/foodRequest/${e}`, {
               status: "Delivered",
             })
             .then((res) => {

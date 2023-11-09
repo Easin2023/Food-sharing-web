@@ -14,24 +14,56 @@ const Manage_My_Foods = () => {
     queryKey: ["addedFoodData"],
     queryFn: async () => {
       const data = await fetch(
-        `https://food-sharing-server-blond.vercel.app/addedFoodData?email=${user?.email}`
+        `https://food-sharing-server-blond.vercel.app/addedFoodData?email=${user?.email}`,
       );
       return await data.json();
     },
   });
 
+  console.log(data)
+
   const handleDelete = (e) => {
-    axios.delete(`https://food-sharing-server-blond.vercel.app/addedFoodData/${e}`).then((res) => {
-      console.log(res.data);
-      if (res.data.deletedCount) {
-        Swal.fire({
-          title: "delate success!",
-          text: "Your product has been delayed!",
-          icon: "success",
-        });
-        refetch();
-      }
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: "btn btn-success",
+        cancelButton: "btn btn-danger",
+      },
+      buttonsStyling: false,
     });
+    swalWithBootstrapButtons
+      .fire({
+        title: "Do you want it delivered??",
+        text: "Then click Yes Delivery or Otherwise click on Cancel!",
+        icon: "info",
+        showCancelButton: true,
+        confirmButtonText: "Yes,Delivered!",
+        cancelButtonText: "No, cancel!",
+        reverseButtons: true,
+      })
+      .then((result) => {
+        if (result.isConfirmed) {
+          swalWithBootstrapButtons.fire({
+            title: "Delivered success!",
+            text: "Your food Delivered success.",
+            icon: "success",
+          });
+          axios.delete(`https://food-sharing-server-blond.vercel.app/addedFoodData/${e}`).then((res) => {
+            console.log(res.data);
+            if (res.data.deletedCount) {
+              refetch();
+            }
+          });
+        } else if (
+          /* Read more about handling dismissals below */
+          result.dismiss === Swal.DismissReason.cancel
+        ) {
+          swalWithBootstrapButtons.fire({
+            title: "Cancelled",
+            text: "Your imaginary file is safe :)",
+            icon: "error",
+          });
+        }
+      });
   };
 
   return (
