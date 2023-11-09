@@ -42,7 +42,7 @@ const My_Food_Request = () => {
             icon: "success",
           });
           axios
-            .delete(`http://localhost:5000/foodRequest/${id}`)
+            .delete(`https://food-sharing-server-blond.vercel.app/foodRequest/${id}`)
             .then((res) => {
               console.log(res.data);
               refetch()
