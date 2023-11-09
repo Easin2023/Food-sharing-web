@@ -6,6 +6,7 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { Helmet } from "react-helmet";
 
 const Manage_My_Foods = () => {
   const { user } = useContext(AuthContext);
@@ -68,6 +69,9 @@ const Manage_My_Foods = () => {
 
   return (
     <div>
+      <Helmet>
+    <title>Manage_My_Foods</title>
+  </Helmet>
       <h1 className="text-5xl my-12 font-semibold border-l-5 border-red-500 ml-16 ">
         <span className="pl-3">Manage My Foods</span>
       </h1>

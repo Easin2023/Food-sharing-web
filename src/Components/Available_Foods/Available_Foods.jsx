@@ -1,7 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import AvailableFoodsCards from "../AvailableFoodsCards/AvailableFoodsCards";
+import { Helmet } from "react-helmet";
 
 const Available_Foods = () => {
+
+
   const { data, isLoading } = useQuery({
     queryKey: ["addedFoodDataFindToExpiredDate"],
     queryFn: async () => {
@@ -22,6 +25,10 @@ const Available_Foods = () => {
 
   return (
     <div>
+      
+  <Helmet>
+    <title>Available_Foods</title>
+  </Helmet>
       <h1 className="text-5xl my-12 font-semibold border-l-5 border-red-500 ml-16 ">
         <span className="pl-3">Available Foods</span>
       </h1>

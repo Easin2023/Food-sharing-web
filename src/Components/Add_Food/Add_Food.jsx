@@ -5,7 +5,7 @@ import axios from "axios";
 import { useEffect, useContext } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
-
+import { Helmet } from "react-helmet";
 const Add_Food = () => {
   const { user } = useContext(AuthContext);
   const email = user.email;
@@ -52,7 +52,11 @@ const Add_Food = () => {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen">
+    <div>
+      <Helmet>
+    <title>Add New food</title>
+  </Helmet>
+      <div className="flex justify-center items-center h-screen">
       <div className=" flex gap-20 lg:flex">
         <div data-aos="fade-right" className="text-center  lg:text-left">
           <h1 className="text-4xl font-bold border-l-8 border-red-500">
@@ -152,6 +156,7 @@ const Add_Food = () => {
           </form>
         </div>
       </div>
+    </div>
     </div>
   );
 };

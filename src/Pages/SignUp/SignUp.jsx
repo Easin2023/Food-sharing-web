@@ -3,6 +3,7 @@ import {useContext, useState} from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { updateProfile } from "firebase/auth";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 
 const SignUp = () => {
@@ -60,7 +61,11 @@ const SignUp = () => {
 
 
   return (
-    <div className="flex  justify-center items-center h-screen gap-20">
+    <div>
+      <Helmet>
+    <title>SignUp Page</title>
+  </Helmet>
+      <div className="flex  justify-center items-center h-screen gap-20">
       <div className="w-full flex-1 max-w-3xl p-8 space-y-3 rounded-xl bg-slate-800 text-gray-100">
         <h1 className="text-2xl font-bold text-center">Sign Up <span className="text-orange-600">Feast Bar</span></h1>
         <form onSubmit={HandleSubmit} action="" className="space-y-6">
@@ -149,6 +154,7 @@ const SignUp = () => {
           <h1 className="text-4xl font-semibold border-l-5 border-orange-600 ">Sign Up <span className="text-orange-600">Feast Bar</span></h1>
           <p className="mt-9">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum magnam aliquid quae laboriosam ipsum eius dolores accusantium optio provident veniam!</p>
       </div>
+    </div>
     </div>
   );
 };

@@ -2,6 +2,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import axios from "axios";
+import { Helmet } from "react-helmet";
 
 const Login = () => {
   const { login, googleLogin } = useContext(AuthContext);
@@ -45,7 +46,11 @@ const Login = () => {
   };
 
   return (
-    <div className="flex  justify-center items-center h-screen gap-20">
+   <div>
+    <Helmet>
+    <title>Login Page</title>
+  </Helmet>
+     <div className="flex  justify-center items-center h-screen gap-20">
       <div className="w-full flex-1 max-w-3xl p-8 space-y-3 rounded-xl bg-slate-800 text-gray-100">
         <h1 className="text-2xl font-bold text-center">
           Login <span className="text-orange-600">Feast Bar</span>
@@ -117,6 +122,7 @@ const Login = () => {
         </p>
       </div>
     </div>
+   </div>
   );
 };
 

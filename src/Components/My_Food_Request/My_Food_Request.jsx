@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const My_Food_Request = () => {
   const { user } = useContext(AuthContext);
@@ -67,6 +68,9 @@ const My_Food_Request = () => {
   console.log(data);
   return (
     <div className="mb-28">
+      <Helmet>
+    <title>My_Food_Request</title>
+  </Helmet>
       <h1 className="text-5xl my-12 font-semibold border-l-5 border-red-500 ml-16 ">
         <span className="pl-3">Manage My Foods</span>
       </h1>
