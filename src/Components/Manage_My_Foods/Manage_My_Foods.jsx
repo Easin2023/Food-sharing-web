@@ -21,7 +21,7 @@ const Manage_My_Foods = () => {
     },
   });
 
-  console.log(data)
+  console.log(data);
 
   const handleDelete = (e) => {
     const swalWithBootstrapButtons = Swal.mixin({
@@ -48,12 +48,16 @@ const Manage_My_Foods = () => {
             text: "Your food Delivered success.",
             icon: "success",
           });
-          axios.delete(`https://food-sharing-server-blond.vercel.app/addedFoodData/${e}`).then((res) => {
-            console.log(res.data);
-            if (res.data.deletedCount) {
-              refetch();
-            }
-          });
+          axios
+            .delete(
+              `https://food-sharing-server-blond.vercel.app/addedFoodData/${e}`
+            )
+            .then((res) => {
+              console.log(res.data);
+              if (res.data.deletedCount) {
+                refetch();
+              }
+            });
         } else if (
           /* Read more about handling dismissals below */
           result.dismiss === Swal.DismissReason.cancel
@@ -68,10 +72,10 @@ const Manage_My_Foods = () => {
   };
 
   return (
-    <div>
+    <div className="min-h-[100vh]">
       <Helmet>
-    <title>Manage_My_Foods</title>
-  </Helmet>
+        <title>Manage_My_Foods</title>
+      </Helmet>
       <h1 className="text-5xl my-12 font-semibold border-l-5 border-red-500 ml-16 ">
         <span className="pl-3">Manage My Foods</span>
       </h1>

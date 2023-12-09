@@ -3,8 +3,6 @@ import AvailableFoodsCards from "../AvailableFoodsCards/AvailableFoodsCards";
 import { Helmet } from "react-helmet";
 
 const Available_Foods = () => {
-
-
   const { data, isLoading } = useQuery({
     queryKey: ["addedFoodDataFindToExpiredDate"],
     queryFn: async () => {
@@ -23,12 +21,18 @@ const Available_Foods = () => {
   }
   console.log(data);
 
+  const handleSubmit = e => {
+    e.preventDefault()
+    const name = e.target.name.value;
+    console.log(name)
+  }
+
+
   return (
     <div>
-      
-  <Helmet>
-    <title>Available_Foods</title>
-  </Helmet>
+      <Helmet>
+        <title>Available_Foods</title>
+      </Helmet>
       <h1 className="text-5xl my-12 font-semibold border-l-5 border-red-500 ml-16 ">
         <span className="pl-3">Available Foods</span>
       </h1>
@@ -50,20 +54,22 @@ const Available_Foods = () => {
             <p className="pt-2 pb-8 text-xl antialiased text-center dark:text-gray-100">
               Find out about events and other news
             </p>
-            <div className="flex flex-row">
-              <input
-                type="text"
-                placeholder="Food Name"
-                name="foodName"
-                className="w-3/5 p-3 rounded-l-lg sm:w-2/3"
-              />
-              <button
-                type="button"
-                className="w-2/5 p-3 font-semibold rounded-r-lg sm:w-1/3 bg-black text-white btn hover:text-black"
-              >
-                Search Food
-              </button>
-            </div>
+            <form onSubmit={handleSubmit}>
+              <div className="flex flex-row">
+                <input
+                  type="text"
+                  placeholder="Food Name"
+                  name="name"
+                  className="w-3/5 p-3 rounded-l-lg sm:w-2/3"
+                />
+                <button
+                  type="submit"
+                  className="w-2/5 p-3 font-semibold rounded-r-lg sm:w-1/3 bg-black text-white btn hover:text-black"
+                >
+                  Search Food
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
