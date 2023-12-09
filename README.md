@@ -1,8 +1,13 @@
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Food Sharing Web Appliction
+<h3>Live Link:  https://forgetful-birth.surge.sh/</h3>
+<h4>server Link : https://github.com/Easin2023/Food-sharing-web-server</h4>
+<hr/>
+<p>
+  -> Technology: ReactJs || Node.js || MongoDB || TailwindCss || NextUi || Express.Js || daisyUi || React Router
+</p>
+<p>
+  ->  A Platform for Food Sharing and Community Collaboration, Share and enjoy meals effortlessly on our platform. Easily manage your food listings or request, edit, and cancel meal requests with simplicity and customization at your fingertips! 
+</p>
+<p>
+  -> This project Features Google Login
+</p>
