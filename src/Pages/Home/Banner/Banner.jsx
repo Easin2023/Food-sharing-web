@@ -50,7 +50,7 @@ const Banner = () => {
             <Image
               className="w-2/3 mx-auto rounded-xl my-10 shadow-2xl"
               isZoomed
-              src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGZvb2R8ZW58MHx8MHx8fDA%3D"
+              src="https://i.ibb.co/h2rmKZ0/no-revisions-Yr-Eyl-IW5-PDc-unsplash.jpg"
             ></Image>
           </div>
         </div>
